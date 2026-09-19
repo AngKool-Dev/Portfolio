@@ -198,6 +198,30 @@
        color: var(--accent);
        text-shadow: 0 0 12px rgba(110,231,255,0.4);
      }
+     .project-links {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 8px;
+       margin-top: 18px;
+       position: relative;
+       z-index: 1;
+     }
+     .project-link {
+       color: var(--accent);
+       font-size: 12px;
+       font-weight: 700;
+       padding: 7px 11px;
+       border: 1px solid var(--glass-border);
+       border-radius: 999px;
+       background: rgba(255,255,255,0.04);
+       text-decoration: none;
+       transition: color 0.2s, border-color 0.2s, background 0.2s;
+     }
+     .project-link:hover {
+       color: var(--text);
+       border-color: rgba(110,231,255,0.35);
+       background: rgba(110,231,255,0.08);
+     }
      .project p { position: relative; z-index: 1; }
     .pill-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; position: relative; z-index: 1; }
     .pill-list li {
@@ -618,7 +642,7 @@
           </article>
 
           <article class="project glass">
-            <h3><a href="https://argus-launcher.pages.dev/" target="_blank" rel="noopener noreferrer">ARGUS</a></h3>
+            <h3>ARGUS AI Agent</h3>
             <p style="margin-top:8px;">AI coding-agent project exploring reasoning loops, multi-phase execution, provider routing, tool use, memory, verification, and repair.</p>
             <ul class="pill-list" style="margin-top:16px;">
               <li>Agents</li>
@@ -630,13 +654,19 @@
 
           <article class="project glass">
             <h3><a href="https://argus-launcher.pages.dev/" target="_blank" rel="noopener noreferrer">ARGUS Launcher</a></h3>
-            <p style="margin-top:8px;">Browser-based launcher interface for ARGUS — a progressive web app with WebAssembly modules, local storage persistence, and AI-assisted project bootstrapping. Deployed on Cloudflare Pages.</p>
+            <p style="margin-top:8px;">Official website and download page for ARGUS, a free, lightweight Rust-powered Minecraft launcher for Windows. It provides automatic Java provisioning, instance management, Modrinth integration, and a keyboard-driven Ratatui terminal interface.</p>
             <ul class="pill-list" style="margin-top:16px;">
-              <li>PWA</li>
-              <li>Cloudflare Pages</li>
-              <li>WebAssembly</li>
-              <li>Browser</li>
+              <li>Rust</li>
+              <li>Minecraft</li>
+              <li>Windows</li>
+              <li>Modrinth</li>
+              <li>TUI</li>
             </ul>
+            <div class="project-links">
+              <a class="project-link" href="https://argus-launcher.pages.dev/download/" target="_blank" rel="noopener noreferrer">Download for Windows</a>
+              <a class="project-link" href="https://github.com/AngKool-Dev/argus-releases" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="project-link" href="https://discord.gg/67BSKR8p3A" target="_blank" rel="noopener noreferrer">Discord</a>
+            </div>
           </article>
 
           <article class="project glass">
@@ -910,7 +940,7 @@
         },
         projects: {
           description: "Questions about specific projects or what John Paul has built",
-          keywords: ['project', 'projects', 'powerwatch', 'power', 'argus', 'eralauncher', 'era', 'launcher', 'db-ob', 'obsidian', 'tooling', 'experiment', 'builds', 'build']
+          keywords: ['project', 'projects', 'powerwatch', 'power', 'eralauncher', 'era', 'db-ob', 'obsidian', 'tooling', 'experiment', 'builds', 'build']
         },
         approach: {
           description: "Questions about the development workflow or methodology",
@@ -920,9 +950,13 @@
           description: "Questions about technical skills, languages, or areas of expertise",
           keywords: ['skill', 'skills', 'language', 'lang', 'python', 'rust', 'javascript', 'java', 'tech', 'stack', 'proficiency', 'expert', 'tool', 'ability']
         },
+        argusLauncher: {
+          description: "Questions about the ARGUS Minecraft launcher website, download, or features",
+          keywords: ['launcher', 'minecraft', 'modrinth', 'ratatui', 'tui', 'windows', 'download', 'plugin', 'plugins']
+        },
         argus: {
           description: "Questions specifically about the ARGUS AI coding agent project",
-          keywords: ['argus', 'agent', 'coding', 'codingagent', 'reasoning', 'loop', 'memory', 'repair', 'verification', 'routing', 'launcher', 'pwa', 'browser']
+          keywords: ['argus', 'agent', 'coding', 'codingagent', 'reasoning', 'loop', 'memory', 'repair', 'verification', 'routing']
         },
         ai: {
           description: "Questions about AI, machine learning, or LLM work",
@@ -955,10 +989,10 @@
           "The portfolio is a single-file HTML deployed via Cloudflare Pages. The tech stack is just vanilla HTML/CSS/JS — the neural network canvas, liquid overlays, and this chat widget all run client-side with no build tools. The bot you're chatting with right now is the only JS logic."
         ],
         projects: [
-          "Here are my key projects:\n\n• **PowerWatch** — Community power outage monitoring platform for Negros Oriental (Python/FastAPI/Cloudflare Workers)\n• **ARGUS** — AI coding agent with reasoning loops, multi-phase execution, provider routing, tool use, memory, and verification/repair\n• **ARGUS Launcher** — Browser-based PWA interface for ARGUS (WebAssembly, Cloudflare Pages, local storage)\n• **EraLauncher** — Rust/Tauri desktop launcher with Ratatui terminal UI\n• **DB-Obsidian** — Persistent agent memory infra (SQLite/FTS5/WAL + Obsidian)\n• **Skills & Routing** — Centralized skills discovery, relevance ranking, and loading system\n• **Tooling Experiments** — Ongoing automation, local AI, CLI/TUI, and deployment work",
-          "My main projects include:\n\n1. **PowerWatch** — A community-focused outage tracker for Negros Oriental\n2. **ARGUS** — An AI coding agent exploring reasoning, routing, tool use, and repair\n3. **ARGUS Launcher** — A browser-based PWA for ARGUS with WebAssembly modules\n4. **EraLauncher** — A Rust/Tauri desktop app with terminal UI\n5. **DB-Obsidian** — Persistent agent memory using SQLite/FTS5\n6. **Skills & Routing** — A framework for skill discovery and AI capability routing\n\nEach project explores how AI can augment development workflows.",
-          "Projects I'm proud of: PowerWatch (outage monitoring), ARGUS (AI coding agent), ARGUS Launcher (browser PWA), EraLauncher (Rust/Tauri desktop), DB-Obsidian (agent memory), and my skills routing framework. Each explores how AI can augment development while keeping humans in control.",
-          "I've built several projects: PowerWatch for outage monitoring, ARGUS as an AI coding agent, ARGUS Launcher as a browser-based PWA, EraLauncher as a Rust/Tauri app, DB-Obsidian for persistent memory, and a skills routing system for AI capabilities. Want to hear more about any specific one?"
+          "Here are my key projects:\n\n• **PowerWatch** — Community power outage monitoring platform for Negros Oriental (Python/FastAPI/Cloudflare Workers)\n• **ARGUS** — AI coding agent with reasoning loops, multi-phase execution, provider routing, tool use, memory, and verification/repair\n• **ARGUS Launcher** — Official website and download page for the free Rust-powered Minecraft launcher for Windows, with automatic Java provisioning, instance management, Modrinth integration, and a Ratatui terminal UI\n• **EraLauncher** — Rust/Tauri desktop launcher with Ratatui terminal UI\n• **DB-Obsidian** — Persistent agent memory infra (SQLite/FTS5/WAL + Obsidian)\n• **Skills & Routing** — Centralized skills discovery, relevance ranking, and loading system\n• **Tooling Experiments** — Ongoing automation, local AI, CLI/TUI, and deployment work",
+          "My main projects include:\n\n1. **PowerWatch** — A community-focused outage tracker for Negros Oriental\n2. **ARGUS** — An AI coding agent exploring reasoning, routing, tool use, and repair\n3. **ARGUS Launcher** — The official site and download page for a portable Windows Minecraft launcher built with Rust and a Ratatui terminal UI\n4. **EraLauncher** — A Rust/Tauri desktop app with terminal UI\n5. **DB-Obsidian** — Persistent agent memory using SQLite/FTS5\n6. **Skills & Routing** — A framework for skill discovery and AI capability routing\n\nEach project explores how AI can augment development workflows.",
+          "Projects I'm proud of: PowerWatch (outage monitoring), ARGUS (AI coding agent), ARGUS Launcher (free Rust-powered Minecraft launcher for Windows), EraLauncher (Rust/Tauri desktop), DB-Obsidian (agent memory), and my skills routing framework. Each explores how AI can augment development while keeping humans in control.",
+          "I've built several projects: PowerWatch for outage monitoring, ARGUS as an AI coding agent, ARGUS Launcher as a portable Windows Minecraft launcher, EraLauncher as a Rust/Tauri app, DB-Obsidian for persistent memory, and a skills routing system for AI capabilities. Want to hear more about any specific one?"
         ],
         approach: [
           "My development approach is a cycle: **Define** → **Context** → **Implement** → **Test** → **Debug** → **Iterate**. I treat AI as a coding partner, not a replacement. I define ideas, provide context, direct implementation, inspect results, test, troubleshoot failures, and decide what to change.\n\nMy philosophy: Build it. Break it. Understand why it broke. Fix it. Test it. Then make it better.",
@@ -972,11 +1006,17 @@
           "I work across Python (AI apps, CLIs, APIs), Rust (desktop, systems), JavaScript (web), and Java (Minecraft/Fabric). For AI: coding agents, LLM routing, local models, memory systems. I'm also big on accessibility — making AI tooling work without expensive hardware or API budgets.",
           "My technical stack spans: Python for AI and automation, Rust for systems and desktop, JavaScript for web, and Java for Minecraft modding. In the AI space I work on coding agents, provider routing, local LLMs, and verification cycles. I also focus on accessibility — bringing AI tooling to resource-constrained environments."
         ],
+        argusLauncher: [
+          "ARGUS is a free, lightweight Rust-powered Minecraft launcher for Windows. The official site at https://argus-launcher.pages.dev/ is its website and download hub, with links to the Windows release, GitHub releases, Discord, plugins, license, terms, and privacy pages. The current Windows x64 release is v0.1.11 at about 14.9 MB.",
+          "ARGUS Launcher is a portable Windows Minecraft launcher built with Rust and a Ratatui terminal UI. Its official website is https://argus-launcher.pages.dev/, and the download page is https://argus-launcher.pages.dev/download/. It auto-detects or provisions Java, manages instances, and integrates Modrinth content.",
+          "The ARGUS website is a download and information page rather than a browser app. It links to the official Windows x64 release, GitHub releases, Discord, and companion server plugins. The launcher itself runs locally as a terminal application and does not require an installer.",
+          "You can learn about and download ARGUS at https://argus-launcher.pages.dev/. It is a free Rust-powered Minecraft launcher for Windows with automatic Java provisioning, instance management, Modrinth integration, and a keyboard-driven Ratatui interface."
+        ],
         argus: [
-          "ARGUS is my AI coding agent project. It explores reasoning loops, multi-phase execution, provider routing across multiple LLM backends, autonomous tool use (file editing, shell commands, code search), persistent memory via SQLite, and a verification/repair cycle where the agent tests its own output and fixes failures. You can try the browser-based ARGUS Launcher at https://argus-launcher.pages.dev/ — this chat widget is a mini prototype of that system!",
-          "ARGUS is an AI coding agent I'm building. It does multi-phase reasoning, routes between LLM providers based on cost/capability, uses tools autonomously, maintains persistent memory in SQLite, and can verify and repair its own code. The ARGUS Launcher at https://argus-launcher.pages.dev/ provides a browser interface — and this chat widget is a small taste of that system running in your browser!",
-          "Think of ARGUS as an AI coding agent that reasons, plans, executes tools, tests results, and fixes its own bugs. It uses provider routing, persistent memory, and a build-break-fix cycle. Check out the ARGUS Launcher at https://argus-launcher.pages.dev/ — this chatbot is a mini prototype of that system!",
-          "ARGUS is my flagship AI coding agent project. Key capabilities: multi-phase execution, LLM provider routing, autonomous tool use (file editing, shell commands), persistent SQLite memory, and a verification/repair loop. Try the ARGUS Launcher at https://argus-launcher.pages.dev/. The bot you're chatting with right now is a tiny prototype of this system!"
+          "ARGUS is my AI coding agent project. It explores reasoning loops, multi-phase execution, provider routing across multiple LLM backends, autonomous tool use (file editing, shell commands, code search), persistent memory via SQLite, and a verification/repair cycle where the agent tests its own output and fixes failures. This chat widget is a mini prototype of that system!",
+          "ARGUS is an AI coding agent I'm building. It does multi-phase reasoning, routes between LLM providers based on cost/capability, uses tools autonomously, maintains persistent memory in SQLite, and can verify and repair its own code. This chat widget is a small taste of that system running in your browser!",
+          "Think of ARGUS as an AI coding agent that reasons, plans, executes tools, tests results, and fixes its own bugs. It uses provider routing, persistent memory, and a build-break-fix cycle. This chatbot is a mini prototype of that system!",
+          "ARGUS is my flagship AI coding agent project. Key capabilities: multi-phase execution, LLM provider routing, autonomous tool use (file editing, shell commands), persistent SQLite memory, and a verification/repair loop. The bot you're chatting with right now is a tiny prototype of this system!"
         ],
         contact: [
           "You can find me on GitHub as @jpa. I'm open to collaboration on AI tooling, developer productivity, and interesting software projects. Feel free to reach out about anything related to AI-assisted development!",
@@ -993,9 +1033,9 @@
         thanks: ["You're welcome! Anything else I can help with?", "My pleasure! Got more questions?", "Happy to help! What else would you like to know?"],
         hello: ["Hello! 👋 Nice to meet you. I'm ARGUS Mini, a prototype AI coding agent. I can tell you about this portfolio, projects, my development approach, or AI work. What would you like to explore?", "Hi there! I'm ARGUS Mini, a prototype AI coding agent running right here in your browser. I can chat about the portfolio, projects, skills, or my AI-assisted development approach. What's on your mind?", "Hey! I'm ARGUS Mini — a mini prototype of my AI coding agent project. I can answer questions about the portfolio, my projects, approach, or technical skills. Just ask!", "Greetings! I'm ARGUS Mini, here to help. I can tell you about the projects I've built, my development workflow, or the tech behind this portfolio. What would you like to know?"],
         help: [
-          "I can answer questions about:\n\n• **Portfolio** — how this site works, tech stack, deployment\n• **Projects** — PowerWatch, ARGUS, EraLauncher, DB-Obsidian, etc.\n• **Approach** — my AI-assisted development workflow\n• **Skills** — languages, AI/LLM, dev tools\n• **Contact** — GitHub, collaboration\n\nJust type a question or click a quick reply below!",
-          "I'm here to chat about:\n\n- The portfolio and how it was built\n- Featured projects and what they do\n- My AI-assisted development approach\n- Technical skills and areas of focus\n- How to get in touch\n\nType away or use the quick replies!",
-          "Ask me anything about:\n\n**Portfolio** — tech stack, deployment\n**Projects** — details on 6+ projects\n**Approach** — AI-assisted workflow\n**Skills** — languages, frameworks, AI tools\n**Contact** — GitHub, collaboration\n\nOr just say hi!"
+          "I can answer questions about:\n\n• **Portfolio** — how this site works, tech stack, deployment\n• **Projects** — PowerWatch, ARGUS AI Agent, ARGUS Launcher, EraLauncher, DB-Obsidian, and more\n• **Approach** — my AI-assisted development workflow\n• **Skills** — languages, AI/LLM, dev tools\n• **Contact** — GitHub, collaboration\n\nJust type a question or click a quick reply below!",
+          "I'm here to chat about:\n\n- The portfolio and how it was built\n- Featured projects, including the ARGUS Minecraft launcher download page\n- My AI-assisted development approach\n- Technical skills and areas of focus\n- How to get in touch\n\nType away or use the quick replies!",
+          "Ask me anything about:\n\n**Portfolio** — tech stack, deployment\n**Projects** — ARGUS AI Agent, ARGUS Launcher, PowerWatch, EraLauncher, DB-Obsidian, and more\n**Approach** — AI-assisted workflow\n**Skills** — languages, frameworks, AI tools\n**Contact** — GitHub, collaboration\n\nOr just say hi!"
         ],
         default: [
           "I'm ARGUS Mini, a prototype AI coding agent! I can tell you about this portfolio, projects, approach, skills, and more. Try asking about any of those topics, or click a quick reply below.",
