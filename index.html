@@ -306,6 +306,235 @@
       .step-grid { grid-template-columns: 1fr; }
       h1 { font-size: 40px; }
     }
+
+    /* AI Assistant Bot Widget */
+    .assistant-trigger {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 50;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(110,231,255,0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      transition: all 0.3s cubic-bezier(.22,.61,.36,1);
+      backdrop-filter: blur(8px);
+    }
+    .assistant-trigger:hover {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 12px 40px rgba(110,231,255,0.45);
+    }
+    .assistant-trigger.toast-ready {
+      animation: pulse-soft 2s ease-in-out infinite;
+    }
+    @keyframes pulse-soft {
+      0%, 100% { box-shadow: 0 8px 30px rgba(110,231,255,0.3); }
+      50% { box-shadow: 0 8px 35px rgba(110,231,255,0.6); }
+    }
+    .assistant-chat {
+      position: fixed;
+      bottom: 95px;
+      right: 24px;
+      z-index: 50;
+      width: min(420px, 92vw);
+      height: min(560px, 80vh);
+      background: var(--glass-strong);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      backdrop-filter: blur(20px) saturate(140%);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+    }
+    .assistant-chat.open { display: flex; }
+    .assistant-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.03);
+    }
+    .assistant-header .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .assistant-header .name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin: 0;
+    }
+    .assistant-header .status {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .assistant-header .status .online-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent3);
+      box-shadow: 0 0 8px var(--accent3);
+    }
+    .assistant-messages {
+      padding: 18px;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      scroll-behavior: smooth;
+    }
+    .assistant-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+    .assistant-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .assistant-messages::-webkit-scrollbar-thumb {
+      background: var(--glass-border);
+      border-radius: 3px;
+    }
+    .assistant-msg {
+      padding: 12px 18px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 82%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .assistant-msg.bot {
+      background: var(--glass);
+      border-radius: 18px 18px 18px 6px;
+      color: var(--text);
+      align-self: flex-start;
+      position: relative;
+    }
+    .assistant-msg.bot .typing-dots {
+      display: inline-block;
+      width: 22px;
+      text-align: center;
+      margin-left: 4px;
+    }
+    .assistant-msg.bot .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin: 0 1px;
+      background: var(--muted);
+      border-radius: 50%;
+      animation: pulse-dot 1.4s infinite ease-in-out;
+    }
+    .assistant-msg.bot .dot:nth-child(1) { animation-delay: -0.32s; }
+    .assistant-msg.bot .dot:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes pulse-dot {
+      0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+    .assistant-msg.user {
+      background: var(--accent);
+      color: #0f172a;
+      border-radius: 18px 18px 6px 18px;
+      align-self: flex-end;
+      font-weight: 500;
+    }
+    .message-time {
+      font-size: 10px;
+      opacity: 0.5;
+      margin-top: 6px;
+      display: block;
+    }
+    .assistant-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 18px 18px;
+      border-top: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.02);
+    }
+    .quick-reply {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .quick-reply:hover {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .assistant-input {
+      display: flex;
+      gap: 10px;
+      padding: 16px 22px;
+      border-top: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.02);
+    }
+    .assistant-input input {
+      flex: 1;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 14px;
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+    .assistant-input input:focus {
+      border-color: var(--accent);
+    }
+    .assistant-input button {
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      border-radius: 14px;
+      padding: 10px 22px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .assistant-input button:hover {
+      box-shadow: 0 0 20px var(--accent);
+      transform: translateY(-1px);
+    }
+    .assistant-input button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
   </style>
 </head>
 <body>
@@ -468,8 +697,8 @@
     <section id="approach">
       <div class="container">
         <span class="tag">Approach</span>
-      <h2>How I Work With AI Coding Tools</h2>
-      <p style="margin-top:12px;">AI tooling is not a replacement for my role. I use it as a development partner and coding agent.</p>
+        <h2>How I Work With AI Coding Tools</h2>
+        <p style="margin-top:12px;">AI tooling is not a replacement for my role. I use it as a development partner and coding agent.</p>
         <div class="step-grid">
           <div class="glass step">
             <div class="step-num">01</div>
@@ -506,6 +735,32 @@
         <div>© <span id="year"></span> John Paul Asonio. Built with AI-assisted development.</div>
       </div>
     </footer>
+  </div>
+
+  <!-- AI Assistant Bot -->
+  <button class="assistant-trigger toast-ready" id="assistant-trigger" aria-label="AI Assistant" title="Ask ARGUS">
+    <span>🤖</span>
+  </button>
+  <div class="assistant-chat" id="assistant-chat" role="dialog" aria-label="ARGUS Assistant">
+    <div class="assistant-header">
+      <span class="avatar">🤖</span>
+      <div>
+        <div class="name">ARGUS Mini</div>
+        <div class="status"><span class="online-dot"></span> Agent online</div>
+      </div>
+    </div>
+      <div class="assistant-messages" id="assistant-messages">
+      </div>
+    <div class="assistant-quick-replies" id="assistant-quick-replies">
+      <button class="quick-reply" data-qa="portfolio">Portfolio</button>
+      <button class="quick-reply" data-qa="projects">Projects</button>
+      <button class="quick-reply" data-qa="approach">My Approach</button>
+      <button class="quick-reply" data-qa="skills">Tech Stack</button>
+    </div>
+    <div class="assistant-input">
+      <input type="text" id="assistant-input" placeholder="Ask me anything…" autocomplete="off" maxlength="500">
+      <button id="assistant-send" disabled>Send</button>
+    </div>
   </div>
 
   <script>
@@ -614,6 +869,393 @@
       document.head.appendChild(styleSheet);
 
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // AI Assistant Bot — ARGUS Mini (TypeSafe System One simulation)
+      const assistantTrigger = document.getElementById('assistant-trigger');
+      const assistantChat = document.getElementById('assistant-chat');
+      const assistantInput = document.getElementById('assistant-input');
+      const assistantSend = document.getElementById('assistant-send');
+      const assistantMessages = document.getElementById('assistant-messages');
+      const assistantQuickReplies = document.getElementById('assistant-quick-replies');
+
+      let isTyping = false;
+      let conversationHistory = [];
+      let totalTokens = 0;
+
+      // Intent classification — simulates TypeSafe Choice questions with probabilities
+      const intentDefinitions = {
+        portfolio: {
+          description: "Questions about this portfolio website, its tech, or how it was built",
+          keywords: ['portfolio', 'site', 'website', 'built', 'stack', 'tech', 'html', 'cloudflare', 'pages', 'deployment', 'single', 'file']
+        },
+        projects: {
+          description: "Questions about specific projects or what John Paul has built",
+          keywords: ['project', 'projects', 'powerwatch', 'power', 'argus', 'eralauncher', 'era', 'launcher', 'db-ob', 'obsidian', 'tooling', 'experiment', 'builds', 'build']
+        },
+        approach: {
+          description: "Questions about the development workflow or methodology",
+          keywords: ['approach', 'workflow', 'process', 'method', 'investigate', 'implement', 'break', 'fix', 'test', 'debug', 'philosophy', 'cycle']
+        },
+        skills: {
+          description: "Questions about technical skills, languages, or areas of expertise",
+          keywords: ['skill', 'skills', 'language', 'lang', 'python', 'rust', 'javascript', 'java', 'tech', 'stack', 'proficiency', 'expert', 'tool', 'ability']
+        },
+        argus: {
+          description: "Questions specifically about the ARGUS AI coding agent project",
+          keywords: ['argus', 'agent', 'coding', 'codingagent', 'reasoning', 'loop', 'memory', 'repair', 'verification', 'routing']
+        },
+        ai: {
+          description: "Questions about AI, machine learning, or LLM work",
+          keywords: ['ai', 'llm', 'machine', 'learning', 'model', 'models', 'neural', 'network', 'local', 'prompt']
+        },
+        contact: {
+          description: "Questions about how to reach or collaborate with John Paul",
+          keywords: ['contact', 'collaborate', 'collab', 'hire', 'job', 'together', 'github', 'reach', 'touch', 'email', 'buy', 'purchase', 'cost', 'price', 'pay', 'pricing', 'developer', 'person', 'john', 'paul']
+        },
+        thanks: {
+          description: "Thanks or appreciation expressions",
+          keywords: ['thank', 'appreciate', 'awesome', 'cool', 'nice', 'great', 'amazing']
+        },
+        hello: {
+          description: "Greeting messages",
+          keywords: ['hello', 'hi', 'hey', 'greetings', 'sup', 'yo']
+        },
+        help: {
+          description: "Requests for help or guidance",
+          keywords: ['help', 'what', 'capabilities', 'abilities', 'whatcan']
+        }
+      };
+
+      // Response knowledge base — multiple variations per intent
+      const responseBank = {
+        portfolio: [
+          "This portfolio was built by John Paul using AI-assisted development. It's a single-file site deployed on Cloudflare Pages, featuring a canvas-based neural network visualization, liquid gradient overlays, and this very chat widget — ARGUS Mini, a prototype of my AI coding agent project.",
+          "John Paul built this portfolio with AI assistance — it's deployed on Cloudflare Pages as a single HTML file. You'll see the neural network canvas animation, liquid overlays, and yes, this very chatbot running in your browser!",
+          "This site is a single HTML file deployment on Cloudflare Pages. John Paul created it as an AI-assisted development showcase — canvas animations, liquid overlays, and this ARGUS Mini chatbot are all in one file with zero build step.",
+          "The portfolio is a single-file HTML deployed via Cloudflare Pages. The tech stack is just vanilla HTML/CSS/JS — the neural network canvas, liquid overlays, and this chat widget all run client-side with no build tools. The bot you're chatting with right now is the only JS logic."
+        ],
+        projects: [
+          "Here are my key projects:\n\n• **PowerWatch** — Community power outage monitoring platform for Negros Oriental (Python/FastAPI/Cloudflare Workers)\n• **ARGUS** — AI coding agent with reasoning loops, multi-phase execution, provider routing, tool use, memory, and verification/repair\n• **EraLauncher** — Rust/Tauri desktop launcher with Ratatui terminal UI\n• **DB-Obsidian** — Persistent agent memory infra (SQLite/FTS5/WAL + Obsidian)\n• **Skills & Routing** — Centralized skills discovery, relevance ranking, and loading system\n• **Tooling Experiments** — Ongoing automation, local AI, CLI/TUI, and deployment work",
+          "My main projects include:\n\n1. **PowerWatch** — A community-focused outage tracker for Negros Oriental\n2. **ARGUS** — An AI coding agent exploring reasoning, routing, tool use, and repair\n3. **EraLauncher** — A Rust/Tauri desktop app with terminal UI\n4. **DB-Obsidian** — Persistent agent memory using SQLite/FTS5\n5. **Skills & Routing** — A framework for skill discovery and AI capability routing\n\nEach project explores how AI can augment development workflows.",
+          "Projects I'm proud of: PowerWatch (outage monitoring), ARGUS (AI coding agent), EraLauncher (Rust/Tauri desktop), DB-Obsidian (agent memory), and my skills routing framework. Each explores how AI can augment development while keeping humans in control.",
+          "I've built several projects: PowerWatch for outage monitoring, ARGUS as an AI coding agent, EraLauncher as a Rust/Tauri app, DB-Obsidian for persistent memory, and a skills routing system for AI capabilities. Want to hear more about any specific one?"
+        ],
+        approach: [
+          "My development approach is a cycle: **Define** → **Context** → **Implement** → **Test** → **Debug** → **Iterate**. I treat AI as a coding partner, not a replacement. I define ideas, provide context, direct implementation, inspect results, test, troubleshoot failures, and decide what to change.\n\nMy philosophy: Build it. Break it. Understand why it broke. Fix it. Test it. Then make it better.",
+          "I work in a loop: define the idea, give context, investigate and implement, then test and debug. I use AI as a development partner — I'm the director, AI is the executioner. My philosophy: Build it. Break it. Understand why. Fix it. Test it. Make it better.",
+          "My workflow: Define → Context → Implement → Test → Debug → Iterate. AI is an active part of my process — I define what to build, break problems into requirements, direct development, inspect results, test, troubleshoot, and decide on changes.\n\nI don't claim every line of code was manually written — AI is an active part of my workflow. My role is to define, direct, inspect, test, and decide.",
+          "The approach is a continuous cycle: first I define what I want to build. Then I provide context — requirements, constraints, expected behavior. Next, I investigate and implement. Finally, I test and debug, iterating until it works. AI helps with implementation, but I own the direction and quality."
+        ],
+        skills: [
+          "Technical areas:\n\n**Languages:** Python, Rust, JavaScript, Java (Minecraft/Fabric)\n**AI/LLM:** Coding agents, provider integration, local LLMs, model routing, quantization, agent tools, prompt workflows, verification/repair\n**Development:** Git/GitHub, testing, CLI/TUI, API integration, Cloudflare Pages, packaging\n**Interests:** AI agents, developer tools, automation, local AI, web apps, persistent memory, knowledge systems\n**Accessibility:** Free/local/BYOK tooling, capability-based routing",
+          "**Languages:** Python, Rust, JavaScript, Java\n**AI/LLM:** Coding agents, provider routing, local LLMs, verification/repair cycles\n**Development:** Git/GitHub, testing, CLI/TUI, API integration, Cloudflare Pages\n**Interests:** AI agents, automation, local AI, persistent memory, practical software\n\nI'm particularly interested in making AI tooling accessible without expensive hardware or API budgets.",
+          "I work across Python (AI apps, CLIs, APIs), Rust (desktop, systems), JavaScript (web), and Java (Minecraft/Fabric). For AI: coding agents, LLM routing, local models, memory systems. I'm also big on accessibility — making AI tooling work without expensive hardware or API budgets.",
+          "My technical stack spans: Python for AI and automation, Rust for systems and desktop, JavaScript for web, and Java for Minecraft modding. In the AI space I work on coding agents, provider routing, local LLMs, and verification cycles. I also focus on accessibility — bringing AI tooling to resource-constrained environments."
+        ],
+        argus: [
+          "ARGUS is my AI coding agent project. It explores reasoning loops, multi-phase execution, provider routing across multiple LLM backends, autonomous tool use (file editing, shell commands, code search), persistent memory via SQLite, and a verification/repair cycle where the agent tests its own output and fixes failures. This chat widget is a mini prototype of that system!",
+          "ARGUS is an AI coding agent I'm building. It does multi-phase reasoning, routes between LLM providers based on cost/capability, uses tools autonomously, maintains persistent memory in SQLite, and can verify and repair its own code. This chat widget is a small taste of that system running in your browser!",
+          "Think of ARGUS as an AI coding agent that reasons, plans, executes tools, tests results, and fixes its own bugs. It uses provider routing, persistent memory, and a build-break-fix cycle. This chatbot is a mini prototype of that system!",
+          "ARGUS is my flagship AI coding agent project. Key capabilities: multi-phase execution, LLM provider routing, autonomous tool use (file editing, shell commands), persistent SQLite memory, and a verification/repair loop. The bot you're chatting with right now is a tiny prototype of this system!"
+        ],
+        contact: [
+          "You can find me on GitHub as @jpa. I'm open to collaboration on AI tooling, developer productivity, and interesting software projects. Feel free to reach out about anything related to AI-assisted development!",
+          "GitHub: @jpa. I'm interested in collaborating on AI tooling, developer productivity, and practical software projects. Drop me a line about AI agents, local LLMs, or developer tools!",
+          "Find me on GitHub @jpa. Always up for interesting conversations about AI agents, developer tools, automation, or local AI. Collaboration welcome!",
+          "You can reach me on GitHub as @jpa. I'm open to collaboration on AI tooling, developer productivity, or any interesting software project. Feel free to say hello!"
+        ],
+        ai: [
+          "I build AI coding agents with reasoning loops, multi-provider routing, autonomous tool use, and verification/repair cycles. My goal is to explore how AI can understand tasks, inspect environments, modify software, remember context, test its own work, detect failures, and keep improving. Everything here is built with that exploration in mind.",
+          "My focus is on AI coding agents that can plan, execute tools, test, and improve iteratively. I work on provider routing, persistent memory, and verification cycles. The goal: systems where AI understands a task, inspects context, modifies software, and keeps improving.",
+          "I build AI agents that combine reasoning, tool use, and verification. Key areas: provider routing, persistent memory, autonomous code editing, and repair loops. I explore how AI can augment development while keeping humans in control of direction and quality.",
+          "My AI work centers on coding agents that can reason, plan, execute tools, and improve iteratively. I focus on provider routing (cost/capability-based), persistent memory, and verification/repair cycles. Everything is designed to be practical and accessible — not just demos."
+        ],
+        thanks: ["You're welcome! Anything else I can help with?", "My pleasure! Got more questions?", "Happy to help! What else would you like to know?"],
+        hello: ["Hello! 👋 Nice to meet you. I'm ARGUS Mini, a prototype AI coding agent. I can tell you about this portfolio, projects, my development approach, or AI work. What would you like to explore?", "Hi there! I'm ARGUS Mini, a prototype AI coding agent running right here in your browser. I can chat about the portfolio, projects, skills, or my AI-assisted development approach. What's on your mind?", "Hey! I'm ARGUS Mini — a mini prototype of my AI coding agent project. I can answer questions about the portfolio, my projects, approach, or technical skills. Just ask!", "Greetings! I'm ARGUS Mini, here to help. I can tell you about the projects I've built, my development workflow, or the tech behind this portfolio. What would you like to know?"],
+        help: [
+          "I can answer questions about:\n\n• **Portfolio** — how this site works, tech stack, deployment\n• **Projects** — PowerWatch, ARGUS, EraLauncher, DB-Obsidian, etc.\n• **Approach** — my AI-assisted development workflow\n• **Skills** — languages, AI/LLM, dev tools\n• **Contact** — GitHub, collaboration\n\nJust type a question or click a quick reply below!",
+          "I'm here to chat about:\n\n- The portfolio and how it was built\n- Featured projects and what they do\n- My AI-assisted development approach\n- Technical skills and areas of focus\n- How to get in touch\n\nType away or use the quick replies!",
+          "Ask me anything about:\n\n**Portfolio** — tech stack, deployment\n**Projects** — details on 6+ projects\n**Approach** — AI-assisted workflow\n**Skills** — languages, frameworks, AI tools\n**Contact** — GitHub, collaboration\n\nOr just say hi!"
+        ],
+        default: [
+          "I'm ARGUS Mini, a prototype AI coding agent! I can tell you about this portfolio, projects, approach, skills, and more. Try asking about any of those topics, or click a quick reply below.",
+          "That's an interesting question! I'm a mini ARGUS prototype — I can chat about the portfolio, projects, my approach to AI-assisted development, technical skills, or how to contact me. What would you like to dive into?",
+          "I can help with questions about this portfolio, my projects (ARGUS, PowerWatch, EraLauncher, etc.), my development approach, technical skills, or contacting me. What's on your mind?",
+          "I'm a prototype AI coding agent — I can discuss the portfolio, my projects, how I work with AI tools, my technical background, or ways to connect. Give it a shot!",
+          "Hmm, I'm not sure I understand fully. I can tell you about the portfolio, projects, approach, skills, or contact info. What would you like to explore?"
+        ]
+      };
+
+      // Intent classification — simulates TypeSafe Choice questions with probabilities
+       function classifyIntent(input) {
+         const lower = input.toLowerCase().replace(/[^\w\s]/g, ' ');
+         const words = lower.split(/\s+/).filter(w => w.length > 0);
+
+         const scores = {};
+         const exactMatches = {};
+         for (const [intent, def] of Object.entries(intentDefinitions)) {
+           let score = 0;
+           let exactCount = 0;
+           for (const word of words) {
+             for (const kw of def.keywords) {
+               if (word === kw) {
+                 score += 2;
+                 exactCount++;
+               } else if (kw.length >= 4 && word.includes(kw)) {
+                 score += 1;
+               }
+             }
+           }
+           scores[intent] = score;
+           exactMatches[intent] = exactCount;
+         }
+
+        const totalScore = Object.values(scores).reduce((sum, v) => sum + v, 0);
+        if (totalScore === 0) {
+          return { intent: 'default', confidence: 0.1, probabilities: { default: 1.0 } };
+        }
+
+        const probabilities = {};
+        let bestIntent = 'default';
+        let bestScore = 0;
+        for (const [intent, score] of Object.entries(scores)) {
+          probabilities[intent] = totalScore > 0 ? score / totalScore : 0;
+          if (score > bestScore) {
+            bestScore = score;
+            bestIntent = intent;
+          }
+        }
+
+        // Confidence calculation
+        // Base confidence from concentration of scores on the best intent
+        let confidence = bestScore / Math.max(1, totalScore);
+
+         // Boost for exact keyword matches
+         if (exactMatches[bestIntent] >= 1 && words.length === 1) {
+           confidence = Math.max(confidence, 0.85);
+         }
+         if (exactMatches[bestIntent] >= 1 && words.length <= 2) {
+           confidence = Math.max(confidence, 0.7);
+         }
+         if (exactMatches[bestIntent] >= 2) {
+           confidence = Math.max(confidence, 0.85);
+         }
+
+         // Boost for strong keyword matches
+         if (bestScore >= 4) confidence = Math.min(0.98, confidence + 0.15);
+         if (bestScore >= 6) confidence = Math.min(0.99, confidence + 0.2);
+
+        // Cap confidence if best intent doesn't clearly dominate
+        const sortedScores = Object.values(scores).sort((a, b) => b - a);
+        const topTwoRatio = sortedScores[0] / Math.max(1, sortedScores[1] || 1);
+        if (topTwoRatio < 2 && bestScore < 3) {
+          confidence = Math.min(confidence, 0.55);
+        }
+
+        return { intent: bestIntent, confidence, probabilities };
+      }
+
+      function formatTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function addMessage(text, isUser) {
+        const msg = document.createElement('div');
+        msg.className = 'assistant-msg ' + (isUser ? 'user' : 'bot');
+        msg.textContent = text;
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'message-time';
+        timeSpan.textContent = formatTime();
+        msg.appendChild(timeSpan);
+        assistantMessages.appendChild(msg);
+        assistantMessages.scrollTop = assistantMessages.scrollHeight;
+      }
+
+      function showTyping() {
+        if (isTyping) return;
+        isTyping = true;
+        const botMsg = document.createElement('div');
+        botMsg.className = 'assistant-msg bot';
+        botMsg.id = 'typing-indicator';
+        botMsg.innerHTML = '<span class="typing-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>';
+        assistantMessages.appendChild(botMsg);
+        assistantMessages.scrollTop = assistantMessages.scrollHeight;
+      }
+
+      function removeTyping() {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) {
+          assistantMessages.removeChild(indicator);
+        }
+        isTyping = false;
+      }
+
+      function pickResponse(intent) {
+        const responses = responseBank[intent] || responseBank.default;
+        return responses[Math.floor(Math.random() * responses.length)];
+      }
+
+      const aiThinkingPhrases = [
+        "Let me think about that...",
+        "Good question. Let me consider...",
+        "I'll reason through this...",
+        "Interesting — let me analyze...",
+        "Here's what I know about that...",
+        "Let me break this down...",
+        "Processing...",
+        "I see — let me share what I know..."
+      ];
+
+      const aiGreetingPhrases = [
+        "Nice to meet you! ",
+        "Hello! ",
+        "Hi! ",
+        "Hey there! "
+      ];
+
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function typeResponse(text, callback) {
+        showTyping();
+        assistantSend.disabled = true;
+        assistantInput.disabled = true;
+
+        const tokenCount = Math.ceil(text.split(' ').length * 1.3);
+        totalTokens += tokenCount;
+        const thinkTime = 400 + tokenCount * 15 + getRandomInt(-50, 100);
+
+        setTimeout(() => {
+          removeTyping();
+          const botMsg = document.createElement('div');
+          botMsg.className = 'assistant-msg bot';
+          assistantMessages.appendChild(botMsg);
+
+          let i = 0;
+          const baseSpeed = 12 + Math.random() * 8;
+
+          const typingInterval = setInterval(() => {
+            if (i < text.length) {
+              botMsg.textContent += text.charAt(i);
+              i++;
+              assistantMessages.scrollTop = assistantMessages.scrollHeight;
+            } else {
+              clearInterval(typingInterval);
+              const timeSpan = document.createElement('span');
+              timeSpan.className = 'message-time';
+              timeSpan.textContent = ' ' + formatTime();
+              botMsg.appendChild(timeSpan);
+              assistantSend.disabled = false;
+              assistantInput.disabled = false;
+              assistantInput.value = '';
+              if (callback) callback();
+            }
+          }, baseSpeed);
+        }, thinkTime);
+      }
+
+      function addConfidenceNote(confidence, intent) {
+        if (confidence < 0.5) {
+          const botMsg = document.createElement('div');
+          botMsg.className = 'assistant-msg bot';
+          const uncertaintyText = "*As an AI, I'm not fully confident about this interpretation (confidence: " + Math.round(confidence * 100) + "%). My intent classifier isn't sure what you're asking about. Let me try to help anyway.*";
+          botMsg.textContent = uncertaintyText;
+          const timeSpan = document.createElement('span');
+          timeSpan.className = 'message-time';
+          timeSpan.textContent = ' ' + formatTime();
+          botMsg.appendChild(timeSpan);
+          assistantMessages.appendChild(botMsg);
+          assistantMessages.scrollTop = assistantMessages.scrollHeight;
+          return true;
+        }
+        return false;
+      }
+
+      function handleSend() {
+        const text = assistantInput.value.trim();
+        if (!text || isTyping) return;
+        addMessage(text, true);
+
+        conversationHistory.push({ role: 'user', content: text });
+        if (conversationHistory.length > 10) conversationHistory.shift();
+
+        const classification = classifyIntent(text);
+        const { intent, confidence } = classification;
+
+        totalTokens += Math.ceil(text.split(' ').length * 1.3);
+
+        if (assistantQuickReplies) {
+          assistantQuickReplies.innerHTML = '';
+        }
+
+         if (confidence < 0.35) {
+           addConfidenceNote(confidence, intent);
+           const response = pickResponse('default');
+           typeResponse(response, resetQuickReplies);
+         } else if (intent === 'hello') {
+           const greeting = aiGreetingPhrases[Math.floor(Math.random() * aiGreetingPhrases.length)];
+           const response = pickResponse(intent);
+           typeResponse(greeting + response, resetQuickReplies);
+         } else if (confidence > 0.5) {
+           const thinking = aiThinkingPhrases[Math.floor(Math.random() * aiThinkingPhrases.length)];
+           const response = pickResponse(intent);
+           typeResponse(thinking + " " + response, resetQuickReplies);
+         } else {
+           const response = pickResponse(intent);
+           typeResponse(response, resetQuickReplies);
+         }
+       }
+
+       function addQuickReplyListeners() {
+        const replies = assistantQuickReplies?.querySelectorAll('.quick-reply');
+        replies?.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const topic = btn.getAttribute('data-qa');
+            assistantInput.value = topic;
+            handleSend();
+          });
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const topic = btn.getAttribute('data-qa');
+              assistantInput.value = topic;
+              handleSend();
+            }
+          });
+        });
+      }
+
+      function resetQuickReplies() {
+        if (!assistantQuickReplies) return;
+        assistantQuickReplies.innerHTML = '<button class="quick-reply" data-qa="portfolio">Portfolio</button><button class="quick-reply" data-qa="projects">Projects</button><button class="quick-reply" data-qa="approach">My Approach</button><button class="quick-reply" data-qa="skills">Tech Stack</button>';
+        addQuickReplyListeners();
+      }
+
+      // Bot initialization
+      addMessage("Hi! I'm ARGUS Mini, a prototype AI coding agent. I can tell you about this portfolio, projects, approach, and more. What would you like to know?", false);
+
+      assistantTrigger.addEventListener('click', () => {
+        assistantChat.classList.toggle('open');
+        if (assistantChat.classList.contains('open')) {
+          assistantInput.focus();
+        }
+      });
+
+      assistantSend.addEventListener('click', handleSend);
+      assistantInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleSend();
+        }
+      });
+
+      assistantInput.addEventListener('input', () => {
+        assistantSend.disabled = assistantInput.value.trim().length === 0;
+      });
+
+      addQuickReplyListeners();
     })();
   </script>
 </body>
