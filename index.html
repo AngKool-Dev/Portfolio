@@ -188,8 +188,17 @@
       transition: opacity 0.4s;
     }
     .project:hover::before { opacity: 1; }
-    .project h3 { position: relative; z-index: 1; }
-    .project p { position: relative; z-index: 1; }
+     .project h3 { position: relative; z-index: 1; }
+     .project h3 a {
+       color: var(--text);
+       text-decoration: none;
+       transition: color 0.2s;
+     }
+     .project h3 a:hover {
+       color: var(--accent);
+       text-shadow: 0 0 12px rgba(110,231,255,0.4);
+     }
+     .project p { position: relative; z-index: 1; }
     .pill-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; position: relative; z-index: 1; }
     .pill-list li {
       font-size: 11px;
@@ -609,13 +618,24 @@
           </article>
 
           <article class="project glass">
-            <h3>ARGUS</h3>
+            <h3><a href="https://argus-launcher.pages.dev/" target="_blank" rel="noopener noreferrer">ARGUS</a></h3>
             <p style="margin-top:8px;">AI coding-agent project exploring reasoning loops, multi-phase execution, provider routing, tool use, memory, verification, and repair.</p>
             <ul class="pill-list" style="margin-top:16px;">
               <li>Agents</li>
               <li>LLM</li>
               <li>Routing</li>
               <li>Verification</li>
+            </ul>
+          </article>
+
+          <article class="project glass">
+            <h3><a href="https://argus-launcher.pages.dev/" target="_blank" rel="noopener noreferrer">ARGUS Launcher</a></h3>
+            <p style="margin-top:8px;">Browser-based launcher interface for ARGUS — a progressive web app with WebAssembly modules, local storage persistence, and AI-assisted project bootstrapping. Deployed on Cloudflare Pages.</p>
+            <ul class="pill-list" style="margin-top:16px;">
+              <li>PWA</li>
+              <li>Cloudflare Pages</li>
+              <li>WebAssembly</li>
+              <li>Browser</li>
             </ul>
           </article>
 
@@ -902,7 +922,7 @@
         },
         argus: {
           description: "Questions specifically about the ARGUS AI coding agent project",
-          keywords: ['argus', 'agent', 'coding', 'codingagent', 'reasoning', 'loop', 'memory', 'repair', 'verification', 'routing']
+          keywords: ['argus', 'agent', 'coding', 'codingagent', 'reasoning', 'loop', 'memory', 'repair', 'verification', 'routing', 'launcher', 'pwa', 'browser']
         },
         ai: {
           description: "Questions about AI, machine learning, or LLM work",
@@ -935,10 +955,10 @@
           "The portfolio is a single-file HTML deployed via Cloudflare Pages. The tech stack is just vanilla HTML/CSS/JS — the neural network canvas, liquid overlays, and this chat widget all run client-side with no build tools. The bot you're chatting with right now is the only JS logic."
         ],
         projects: [
-          "Here are my key projects:\n\n• **PowerWatch** — Community power outage monitoring platform for Negros Oriental (Python/FastAPI/Cloudflare Workers)\n• **ARGUS** — AI coding agent with reasoning loops, multi-phase execution, provider routing, tool use, memory, and verification/repair\n• **EraLauncher** — Rust/Tauri desktop launcher with Ratatui terminal UI\n• **DB-Obsidian** — Persistent agent memory infra (SQLite/FTS5/WAL + Obsidian)\n• **Skills & Routing** — Centralized skills discovery, relevance ranking, and loading system\n• **Tooling Experiments** — Ongoing automation, local AI, CLI/TUI, and deployment work",
-          "My main projects include:\n\n1. **PowerWatch** — A community-focused outage tracker for Negros Oriental\n2. **ARGUS** — An AI coding agent exploring reasoning, routing, tool use, and repair\n3. **EraLauncher** — A Rust/Tauri desktop app with terminal UI\n4. **DB-Obsidian** — Persistent agent memory using SQLite/FTS5\n5. **Skills & Routing** — A framework for skill discovery and AI capability routing\n\nEach project explores how AI can augment development workflows.",
-          "Projects I'm proud of: PowerWatch (outage monitoring), ARGUS (AI coding agent), EraLauncher (Rust/Tauri desktop), DB-Obsidian (agent memory), and my skills routing framework. Each explores how AI can augment development while keeping humans in control.",
-          "I've built several projects: PowerWatch for outage monitoring, ARGUS as an AI coding agent, EraLauncher as a Rust/Tauri app, DB-Obsidian for persistent memory, and a skills routing system for AI capabilities. Want to hear more about any specific one?"
+          "Here are my key projects:\n\n• **PowerWatch** — Community power outage monitoring platform for Negros Oriental (Python/FastAPI/Cloudflare Workers)\n• **ARGUS** — AI coding agent with reasoning loops, multi-phase execution, provider routing, tool use, memory, and verification/repair\n• **ARGUS Launcher** — Browser-based PWA interface for ARGUS (WebAssembly, Cloudflare Pages, local storage)\n• **EraLauncher** — Rust/Tauri desktop launcher with Ratatui terminal UI\n• **DB-Obsidian** — Persistent agent memory infra (SQLite/FTS5/WAL + Obsidian)\n• **Skills & Routing** — Centralized skills discovery, relevance ranking, and loading system\n• **Tooling Experiments** — Ongoing automation, local AI, CLI/TUI, and deployment work",
+          "My main projects include:\n\n1. **PowerWatch** — A community-focused outage tracker for Negros Oriental\n2. **ARGUS** — An AI coding agent exploring reasoning, routing, tool use, and repair\n3. **ARGUS Launcher** — A browser-based PWA for ARGUS with WebAssembly modules\n4. **EraLauncher** — A Rust/Tauri desktop app with terminal UI\n5. **DB-Obsidian** — Persistent agent memory using SQLite/FTS5\n6. **Skills & Routing** — A framework for skill discovery and AI capability routing\n\nEach project explores how AI can augment development workflows.",
+          "Projects I'm proud of: PowerWatch (outage monitoring), ARGUS (AI coding agent), ARGUS Launcher (browser PWA), EraLauncher (Rust/Tauri desktop), DB-Obsidian (agent memory), and my skills routing framework. Each explores how AI can augment development while keeping humans in control.",
+          "I've built several projects: PowerWatch for outage monitoring, ARGUS as an AI coding agent, ARGUS Launcher as a browser-based PWA, EraLauncher as a Rust/Tauri app, DB-Obsidian for persistent memory, and a skills routing system for AI capabilities. Want to hear more about any specific one?"
         ],
         approach: [
           "My development approach is a cycle: **Define** → **Context** → **Implement** → **Test** → **Debug** → **Iterate**. I treat AI as a coding partner, not a replacement. I define ideas, provide context, direct implementation, inspect results, test, troubleshoot failures, and decide what to change.\n\nMy philosophy: Build it. Break it. Understand why it broke. Fix it. Test it. Then make it better.",
@@ -953,10 +973,10 @@
           "My technical stack spans: Python for AI and automation, Rust for systems and desktop, JavaScript for web, and Java for Minecraft modding. In the AI space I work on coding agents, provider routing, local LLMs, and verification cycles. I also focus on accessibility — bringing AI tooling to resource-constrained environments."
         ],
         argus: [
-          "ARGUS is my AI coding agent project. It explores reasoning loops, multi-phase execution, provider routing across multiple LLM backends, autonomous tool use (file editing, shell commands, code search), persistent memory via SQLite, and a verification/repair cycle where the agent tests its own output and fixes failures. This chat widget is a mini prototype of that system!",
-          "ARGUS is an AI coding agent I'm building. It does multi-phase reasoning, routes between LLM providers based on cost/capability, uses tools autonomously, maintains persistent memory in SQLite, and can verify and repair its own code. This chat widget is a small taste of that system running in your browser!",
-          "Think of ARGUS as an AI coding agent that reasons, plans, executes tools, tests results, and fixes its own bugs. It uses provider routing, persistent memory, and a build-break-fix cycle. This chatbot is a mini prototype of that system!",
-          "ARGUS is my flagship AI coding agent project. Key capabilities: multi-phase execution, LLM provider routing, autonomous tool use (file editing, shell commands), persistent SQLite memory, and a verification/repair loop. The bot you're chatting with right now is a tiny prototype of this system!"
+          "ARGUS is my AI coding agent project. It explores reasoning loops, multi-phase execution, provider routing across multiple LLM backends, autonomous tool use (file editing, shell commands, code search), persistent memory via SQLite, and a verification/repair cycle where the agent tests its own output and fixes failures. You can try the browser-based ARGUS Launcher at https://argus-launcher.pages.dev/ — this chat widget is a mini prototype of that system!",
+          "ARGUS is an AI coding agent I'm building. It does multi-phase reasoning, routes between LLM providers based on cost/capability, uses tools autonomously, maintains persistent memory in SQLite, and can verify and repair its own code. The ARGUS Launcher at https://argus-launcher.pages.dev/ provides a browser interface — and this chat widget is a small taste of that system running in your browser!",
+          "Think of ARGUS as an AI coding agent that reasons, plans, executes tools, tests results, and fixes its own bugs. It uses provider routing, persistent memory, and a build-break-fix cycle. Check out the ARGUS Launcher at https://argus-launcher.pages.dev/ — this chatbot is a mini prototype of that system!",
+          "ARGUS is my flagship AI coding agent project. Key capabilities: multi-phase execution, LLM provider routing, autonomous tool use (file editing, shell commands), persistent SQLite memory, and a verification/repair loop. Try the ARGUS Launcher at https://argus-launcher.pages.dev/. The bot you're chatting with right now is a tiny prototype of this system!"
         ],
         contact: [
           "You can find me on GitHub as @jpa. I'm open to collaboration on AI tooling, developer productivity, and interesting software projects. Feel free to reach out about anything related to AI-assisted development!",
